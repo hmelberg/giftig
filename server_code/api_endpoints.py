@@ -36,13 +36,30 @@ def _json(body: dict, status: int = 200) -> HttpResponse:
 
 
 def _load_body() -> dict:
+    """Read the request body as JSON, tolerating bad encodings.
+
+    Anvil's `request.body_json` raises UnicodeDecodeError when the client
+    sends non-UTF-8 bytes (e.g. Windows curl sometimes emits cp1252 for
+    Norwegian characters in `-d` payloads), which otherwise manifests as
+    an opaque 500. We catch that and try cp1252 / latin-1 as fallbacks so
+    the handler still responds with a useful JSON error.
+    """
     req = anvil.server.request
-    body = req.body_json
+    try:
+        body = req.body_json
+    except Exception:
+        body = None
     if body is None and req.body:
         try:
-            body = json.loads(req.body.get_bytes().decode("utf-8"))
+            raw = req.body.get_bytes()
         except Exception:
-            body = None
+            raw = b""
+        for enc in ("utf-8", "cp1252", "latin-1"):
+            try:
+                body = json.loads(raw.decode(enc))
+                break
+            except Exception:
+                continue
     return body or {}
 
 
