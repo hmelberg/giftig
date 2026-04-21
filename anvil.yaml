@@ -28,12 +28,15 @@ runtime_options:
   server_spec: {base: python310-datascience}
   version: 3
 secrets:
-  ANTHROPIC_ALIAS:
-    type: secret
-    value: {OHW5N3TFJE7446G2: 1nOxMnpyatSCnqz/zOKCAO85FtZhyoj3OheeOPhbqFhDzUwN5QI920ki+jgxJbQc8vr8wMQjwugwwCk3Ah6XxmPOaJLSgVo2S+SaQvmuGmQhROj22Nc2VUVZ4JF1mHxFymuX}
   ANTHROPIC_API_KEY:
     type: secret
     value: {OHW5N3TFJE7446G2: Uz1Bw6vTIQBqjwQTbl4FXRPFA5xivztSh41Fm8HHv12TGpr9EJJNBd/lRzJt2UTkDQYhV4gpf5v5IV3ifz0W0831B+1osflQaQEbBuEoFd2CRHigOAnRZ5xNvIHAckBo6O27jr4+Taz9zbqh938QJs3yiZ+cXkCZCykT710Pz5VDU18sRLEevlDXRMP0dVg31+tJIU7E5+bWbMYcdsuJ+E+bbvHYBShx9Cb9+eIJ6q0cE8WJLLmsNReLFGXqUp2FGJBNSIrueIOiYTo=}
+  API_KEY_ALIAS:
+    type: secret
+    value: {OHW5N3TFJE7446G2: 1nOxMnpyatSCnqz/zOKCAO85FtZhyoj3OheeOPhbqFhDzUwN5QI920ki+jgxJbQc8vr8wMQjwugwwCk3Ah6XxmPOaJLSgVo2S+SaQvmuGmQhROj22Nc2VUVZ4JF1mHxFymuX}
+  API_KEY_HANS:
+    type: secret
+    value: {OHW5N3TFJE7446G2: 2+xfZMHkVRouKtnA7BZo8F/B0yBy/W+v856QkAJnBmTdd3sK8LOGnAupKEqsvX18JVsVgRIy89nX456Xqru2nsPZOpLSsSl3ncO5zsr4zezYcC0G6TMQORE5h1yR2ppEXYhwjKwNEZWtt8x7YaQMIGjiew==}
 services:
 - client_config: {enable_v2: true}
   server_config: {}
